@@ -1,16 +1,17 @@
 import { Phone, MessageCircle, CalendarCheck } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { CLINIC, waLink } from "@/lib/clinic";
 
 export function MobileCta() {
   return (
     <>
-      {/* Floating WhatsApp (all screens) */}
+      {/* Floating WhatsApp (tablet/desktop only) */}
       <a
         href={waLink()}
         target="_blank"
         rel="noopener"
         aria-label="WhatsApp Dental Plus"
-        className="fixed right-4 bottom-24 md:bottom-6 z-40 size-14 grid place-items-center rounded-full bg-whatsapp text-white shadow-cta animate-pulse-ring"
+        className="hidden md:grid fixed right-4 bottom-6 z-40 size-14 place-items-center rounded-full bg-whatsapp text-white shadow-cta animate-pulse-ring"
       >
         <MessageCircle className="size-7" />
       </a>
@@ -26,10 +27,10 @@ export function MobileCta() {
             <MessageCircle className="size-5" />
             <span className="text-[11px] font-semibold">WhatsApp</span>
           </a>
-          <a href="#appointment" className="flex flex-col items-center gap-1 py-2 rounded-xl bg-gradient-primary text-primary-foreground">
-            <CalendarCheck className="size-5" />
+          <Link to="/appointment" className="flex flex-col items-center gap-1 py-2 rounded-xl bg-gradient-primary text-primary-foreground text-center">
+            <CalendarCheck className="size-5 mx-auto" />
             <span className="text-[11px] font-semibold">Book</span>
-          </a>
+          </Link>
         </div>
       </div>
     </>
