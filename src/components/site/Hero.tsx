@@ -1,5 +1,5 @@
 import { Phone, MessageCircle, Calendar, ShieldCheck, Sparkles, Star } from "lucide-react";
-import heroImg from "@/assets/hero-clinic.jpg";
+import heroImg from "@/assets/optimized/treatmentArea2.webp";
 import { CLINIC, waLink } from "@/lib/clinic";
 import { Link } from "@tanstack/react-router";
 

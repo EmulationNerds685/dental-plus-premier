@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { CLINIC } from "@/lib/clinic";
-import logoImg from "@/assets/DP_Logo.png";
+import logoImg from "@/assets/optimized/DP_Logo.webp";
 
 const links = [
   { to: "/", label: "Home" },

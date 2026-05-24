@@ -3,7 +3,7 @@ import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const reviews = [
-  { name: "Ananya Sharma", role: "Dehradun", text: "The most painless root canal I've ever had! Dr. Jigyasa is incredibly skilled and the clinic feels world-class.", rating: 5 },
+  { name: "Ananya Sharma", role: "Dehradun", text: "The most painless root canal I've ever had! Dr. Jigyasa Bhardwaj is incredibly skilled and the clinic feels world-class.", rating: 5 },
   { name: "Rohit Verma", role: "Ajabpur Kalan", text: "Got my teeth whitening done — results were stunning in a single visit. Highly recommend Dental Plus.", rating: 5 },
   { name: "Priya Negi", role: "Pragati Vihar", text: "Best dental clinic in Dehradun. Sterilization, technology and patient care are all top-notch.", rating: 5 },
   { name: "Manish Rawat", role: "Patel Nagar", text: "Got dental implants done here. Smooth process, transparent pricing, and excellent results.", rating: 5 },

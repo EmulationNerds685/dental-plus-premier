@@ -10,7 +10,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import logoImg from "../assets/DP_Logo.png?url";
+import logoImg from "../assets/optimized/DP_Logo_favicon.png?url";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {

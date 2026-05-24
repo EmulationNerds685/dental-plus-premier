@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { GraduationCap, BadgeCheck, Stethoscope } from "lucide-react";
-import doctorImg from "@/assets/doctor.jpg";
+import doctorImg from "@/assets/optimized/doctor2.webp";
 import { CLINIC } from "@/lib/clinic";
 
 export function About() {
@@ -34,7 +34,7 @@ export function About() {
 
           <p className="mt-5 text-muted-foreground leading-relaxed">
             With over a decade of experience in modern cosmetic and restorative dentistry,
-            Dr. Jigyasa is passionate about delivering painless, precision care. She combines
+            Dr. Jigyasa Bhardwaj is passionate about delivering painless, precision care. She combines
             advanced clinical training with empathetic patient communication — ensuring every
             visit to Dental Plus feels safe, comfortable, and uplifting.
           </p>

@@ -66,7 +66,7 @@ export function Quiz({ onApplyRecommendation }: QuizProps) {
       case "Sharp Toothache or Sensitivity":
         return {
           title: "Painless Root Canal Treatment",
-          desc: "Dr. Jigyasa specializes in modern rotary root canal therapy, which relieves acute toothache in a single sitting without any pain.",
+          desc: "Dr. Jigyasa Bhardwaj specializes in modern rotary root canal therapy, which relieves acute toothache in a single sitting without any pain.",
           service: "Root Canal",
         };
       default:

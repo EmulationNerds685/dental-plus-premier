@@ -70,7 +70,7 @@ export const serviceDetails: ServiceDetail[] = [
     ],
     steps: [
       { title: "Enamel Prep", desc: "The tooth surface is lightly cleaned, and a mild conditioning gel is applied to secure the bond." },
-      { title: "Resin Matching", desc: "Dr. Jigyasa selects a composite resin shade that matches your natural tooth color precisely." },
+      { title: "Resin Matching", desc: "Dr. Jigyasa Bhardwaj selects a composite resin shade that matches your natural tooth color precisely." },
       { title: "Artistic Shaping", desc: "The composite resin is carefully applied and sculpted to close the gap or restore the chip." },
       { title: "Light Curing", desc: "A high-intensity curing light hardens the sculpted resin material in seconds." },
       { title: "Buffing & Polish", desc: "The tooth is refined and polished to match the natural shine of your surrounding teeth." }
@@ -248,7 +248,7 @@ export const serviceDetails: ServiceDetail[] = [
       "100% mercury-free, durable, and highly bio-safe materials",
     ],
     steps: [
-      { title: "Decay Removal", desc: "Dr. Jigyasa carefully removes decayed enamel, cleaning and disinfecting the cavity." },
+      { title: "Decay Removal", desc: "Dr. Jigyasa Bhardwaj carefully removes decayed enamel, cleaning and disinfecting the cavity." },
       { title: "Conditioning", desc: "We apply a mild conditioning gel to open enamel pores, ensuring the bond is strong." },
       { title: "Layering Resin", desc: "The tooth-colored nano-hybrid composite resin is layered into the cavity." },
       { title: "Laser Cure", desc: "A special curing light hardens each layer of composite resin in a few seconds." },

@@ -3,11 +3,12 @@ import { Navbar } from "@/components/site/Navbar";
 import { About as AboutComponent } from "@/components/site/About";
 import { WhyUs } from "@/components/site/WhyUs";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
+import { Gallery } from "@/components/site/Gallery";
 import { Footer } from "@/components/site/Footer";
 import { MobileCta } from "@/components/site/MobileCta";
 import { CLINIC } from "@/lib/clinic";
 import { ShieldCheck, Award, Heart, CheckCircle2 } from "lucide-react";
-import doctorImg from "@/assets/doctor.jpg";
+import doctorImg from "@/assets/optimized/doctor.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -86,6 +87,9 @@ function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Inside our Clinic Showcase */}
+      <Gallery />
 
       {/* Before/After Transformation Showcase */}
       <section className="py-16 sm:py-20 bg-gradient-soft">

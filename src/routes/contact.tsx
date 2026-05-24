@@ -244,7 +244,7 @@ function ContactPage() {
                       rows={5}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Hi Dr. Jigyasa, I wanted to know..."
+                      placeholder="Hi Dr. Jigyasa Bhardwaj, I wanted to know..."
                       className="mt-1.5 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-navy outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                     />
                   </div>

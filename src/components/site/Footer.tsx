@@ -1,7 +1,7 @@
 import { CLINIC, waLink } from "@/lib/clinic";
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, MessageCircle, MapPin } from "lucide-react";
-import logoImg from "@/assets/DP_Logo.png";
+import logoImg from "@/assets/optimized/DP_Logo.webp";
 
 const services = [
   "Teeth Whitening", "Dental Implants", "Root Canal Treatment", "Veneers & Crowns",

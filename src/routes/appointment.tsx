@@ -240,7 +240,7 @@ function AppointmentPage() {
                   <CheckCircle className="size-14 text-emerald-500 mx-auto mb-4" />
                   <h3 className="font-display font-semibold text-xl">Booking Sent!</h3>
                   <p className="text-sm mt-2 text-emerald-700/95 max-w-sm mx-auto leading-relaxed">
-                    Your appointment request has been structured and forwarded to our WhatsApp portal. Dr. Jigyasa's assistant will verify and confirm your slot instantly.
+                    Your appointment request has been structured and forwarded to our WhatsApp portal. Dr. Jigyasa Bhardwaj's assistant will verify and confirm your slot instantly.
                   </p>
                   <button
                     onClick={() => {

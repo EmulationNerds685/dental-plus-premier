@@ -9,7 +9,7 @@ import { Footer } from "@/components/site/Footer";
 import { MobileCta } from "@/components/site/MobileCta";
 import { CLINIC } from "@/lib/clinic";
 import { Sparkles, Wrench, Bone, Crown, ArrowRight, ShieldCheck, Star } from "lucide-react";
-import doctorImg from "@/assets/doctor.jpg";
+import doctorImg from "@/assets/optimized/doctor2.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -139,7 +139,7 @@ function Home() {
 
           <div>
             <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider mb-4">
-              Meet Dr. Jigyasa
+              Meet Dr. Jigyasa Bhardwaj
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy leading-tight">
               A Decade of <span className="text-gradient">Clinical Excellence</span>
@@ -179,7 +179,7 @@ function Home() {
             Ready to experience <span className="text-cyan">painless dental care?</span>
           </h2>
           <p className="mt-3 text-white/80 max-w-lg mx-auto text-sm sm:text-base">
-            Select a preferred slot or consult Dr. Jigyasa directly. Click below to book your appointment online in 1 minute.
+            Select a preferred slot or consult Dr. Jigyasa Bhardwaj directly. Click below to book your appointment online in 1 minute.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
