@@ -23,10 +23,20 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "glass shadow-soft" : "bg-transparent"
-        }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        open
+          ? "bg-transparent"
+          : scrolled
+            ? "glass shadow-soft"
+            : "bg-transparent"
+      }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">

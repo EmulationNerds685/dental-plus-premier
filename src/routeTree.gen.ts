@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConsentRouteImport } from './routes/consent'
 import { Route as AppointmentRouteImport } from './routes/appointment'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
@@ -26,9 +28,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsentRoute = ConsentRouteImport.update({
+  id: '/consent',
+  path: '/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppointmentRoute = AppointmentRouteImport.update({
   id: '/appointment',
   path: '/appointment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -50,7 +62,9 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/appointment': typeof AppointmentRoute
+  '/consent': typeof ConsentRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -58,7 +72,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/appointment': typeof AppointmentRoute
+  '/consent': typeof ConsentRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -67,7 +83,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/appointment': typeof AppointmentRoute
+  '/consent': typeof ConsentRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/services_/$slug': typeof ServicesSlugRoute
@@ -77,7 +95,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/appointment'
+    | '/consent'
     | '/contact'
     | '/services'
     | '/services/$slug'
@@ -85,7 +105,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/appointment'
+    | '/consent'
     | '/contact'
     | '/services'
     | '/services/$slug'
@@ -93,7 +115,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/appointment'
+    | '/consent'
     | '/contact'
     | '/services'
     | '/services_/$slug'
@@ -102,7 +126,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   AppointmentRoute: typeof AppointmentRoute
+  ConsentRoute: typeof ConsentRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
@@ -124,11 +150,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consent': {
+      id: '/consent'
+      path: '/consent'
+      fullPath: '/consent'
+      preLoaderRoute: typeof ConsentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/appointment': {
       id: '/appointment'
       path: '/appointment'
       fullPath: '/appointment'
       preLoaderRoute: typeof AppointmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -158,7 +198,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   AppointmentRoute: AppointmentRoute,
+  ConsentRoute: ConsentRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
   ServicesSlugRoute: ServicesSlugRoute,
