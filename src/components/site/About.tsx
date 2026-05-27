@@ -33,7 +33,7 @@ export function About() {
           <p className="mt-2 text-sm font-medium text-primary">{CLINIC.doctor.qualifications} • {CLINIC.doctor.panel}</p>
 
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            With over a decade of experience in modern cosmetic and restorative dentistry,
+            With 17+ years of experience in modern cosmetic and restorative dentistry,
             Dr. Jigyasa Bhardwaj is passionate about delivering painless, precision care. She combines
             advanced clinical training with empathetic patient communication — ensuring every
             visit to Dental Plus feels safe, comfortable, and uplifting.
@@ -42,8 +42,8 @@ export function About() {
           <div className="mt-8 grid sm:grid-cols-3 gap-4">
             {[
               { icon: GraduationCap, t: "BDS, MAOI", d: "Qualified Dental Surgeon" },
-              { icon: BadgeCheck, t: "IIP PTCUL", d: "Empaneled Specialist" },
-              { icon: Stethoscope, t: "10+ Years", d: "Clinical Experience" },
+              { icon: BadgeCheck, t: "PTCUL, UJVNL", d: "Empaneled Specialist" },
+              { icon: Stethoscope, t: "17+ Years", d: "Clinical Experience" },
             ].map((b) => (
               <div key={b.t} className="rounded-2xl border border-border p-4 bg-card shadow-soft">
                 <b.icon className="size-6 text-primary mb-2" />

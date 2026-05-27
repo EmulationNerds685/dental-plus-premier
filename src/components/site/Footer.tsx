@@ -1,6 +1,6 @@
 import { CLINIC, waLink } from "@/lib/clinic";
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Phone, MessageCircle, MapPin } from "lucide-react";
+import { Instagram, Facebook, Phone, MessageCircle, MapPin, Youtube } from "lucide-react";
 import logoImg from "@/assets/optimized/DP_Logo.webp";
 
 const services = [
@@ -42,6 +42,17 @@ export function Footer() {
             >
               <Facebook className="size-4" />
             </a>
+            {CLINIC.social.youtube && (
+              <a
+                href={CLINIC.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="size-10 grid place-items-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="size-4" />
+              </a>
+            )}
           </div>
         </div>
 

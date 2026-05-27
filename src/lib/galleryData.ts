@@ -77,7 +77,7 @@ export const galleryItems: GalleryItem[] = [
     category: "spaces",
     title: "Advanced Treatment Suite",
     description:
-      "State-of-the-art dental operatory with ergonomic chairs, LED shadowless lighting, and Class-B sterilized instruments.",
+      "State-of-the-art dental operatory with ergonomic chairs, LED shadowless lighting, and world class sterilized instruments.",
     h: "h-72 md:h-80",
   },
   {
@@ -106,7 +106,7 @@ export const galleryItems: GalleryItem[] = [
     category: "doctor",
     title: "Dr. Jigyasa Bhardwaj",
     description:
-      "Chief Dental Surgeon (BDS, MAOI) — passionate about delivering painless, precision dental care with over a decade of clinical experience.",
+      "Chief Dental Surgeon (BDS, MAOI) — passionate about delivering painless, precision dental care with 17+ years of clinical experience.",
     h: "h-80 md:h-[450px]",
   },
   {

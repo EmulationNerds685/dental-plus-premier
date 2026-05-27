@@ -10,6 +10,7 @@ import { MobileCta } from "@/components/site/MobileCta";
 import { CLINIC } from "@/lib/clinic";
 import { Sparkles, Wrench, Bone, Crown, ArrowRight, ShieldCheck, Star } from "lucide-react";
 import doctorImg from "@/assets/optimized/doctor2.webp";
+import { serviceDetails } from "@/lib/servicesData";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/")({
           "@type": "Dentist",
           name: "Dental Plus",
           image: "/og.jpg",
-          telephone: "+91-8755703677",
+          telephone: "+91-9927866519",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Swami Dayanand Saraswati Setu, Pragati Vihar, Ajabpur Kalan",
@@ -117,7 +118,7 @@ function Home() {
               to="/services"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-8 py-4 font-semibold text-primary-foreground shadow-cta hover:scale-[1.03] transition-transform"
             >
-              Explore All 19 Treatments <ArrowRight className="size-4.5" />
+              Explore All {serviceDetails.length} Treatments <ArrowRight className="size-4.5" />
             </Link>
           </div>
         </div>
@@ -142,7 +143,7 @@ function Home() {
               Meet Dr. Jigyasa Bhardwaj
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy leading-tight">
-              A Decade of <span className="text-gradient">Clinical Excellence</span>
+              17+ Years of <span className="text-gradient">Clinical Excellence</span>
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Dr. Jigyasa Bhardwaj (BDS, MAOI) combines extensive experience with warm, empathetic patient communication. Under her leadership, Dental Plus delivers painless, top-tier treatments, ensuring you feel comfortable and completely safe.
@@ -152,7 +153,7 @@ function Home() {
                 <ShieldCheck className="size-4 text-primary" /> Sterilized Clinic
               </div>
               <div className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full">
-                <Star className="size-4 fill-amber-400 text-amber-400" /> 4.9 Rated (Google Reviews)
+                <Star className="size-4 fill-amber-400 text-amber-400" /> 5 Star Rated (Google Reviews)
               </div>
             </div>
             <div className="mt-8">

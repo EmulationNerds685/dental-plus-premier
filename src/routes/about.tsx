@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: `About ${CLINIC.doctor.name} | Best Dentist in Dehradun` },
-      { name: "description", content: `Meet Dr. Jigyasa Bhardwaj (BDS, MAOI), lead surgeon at Dental Plus Dehradun. Empathetic dental care, 10+ years clinical excellence, specialized in painless endodontics & cosmetics.` },
+      { name: "description", content: `Meet Dr. Jigyasa Bhardwaj (BDS, MAOI), lead surgeon at Dental Plus Dehradun. Empathetic dental care, 17+ years clinical excellence, specialized in painless endodontics & cosmetics.` },
       { name: "keywords", content: "Dr Jigyasa Bhardwaj, Best Dentist Dehradun, Dental Clinic Dehradun, BDS Dentist Dehradun, Dental Surgeon Dehradun" },
       { property: "og:title", content: `Dr. Jigyasa Bhardwaj | Chief Dentist at Dental Plus Dehradun` },
       { property: "og:description", content: "Qualified Dental Surgeon with BDS, MAOI and a passion for modern, painless cosmetic and restorative dentistry in Dehradun." },
@@ -60,7 +60,7 @@ function AboutPage() {
               {
                 icon: ShieldCheck,
                 title: "Sterilization First",
-                desc: "We practice class-B autoclave sterilization, ensuring 100% sterile instruments and fully disposable patient safety kits.",
+                desc: "We practice world class autoclave sterilization, ensuring 100% sterile instruments and fully disposable patient safety kits.",
               },
               {
                 icon: Heart,

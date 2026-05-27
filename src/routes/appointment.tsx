@@ -25,7 +25,7 @@ export const Route = createFileRoute("/appointment")({
 
 const servicesList = [
   "Dental Checkup", "Teeth Whitening", "Root Canal", "Dental Implants",
-  "Cosmetic Dentistry", "Veneers & Crowns", "Pediatric Dentistry", "Emergency Care", "Other",
+  "Cosmetic Dentistry", "Veneers & Crowns", "Braces and Aligner", "Pediatric Dentistry", "Emergency Care", "Other",
 ];
 
 // Custom styled Time Slots
@@ -112,11 +112,11 @@ function AppointmentPage() {
       });
 
       if (result?.success) {
-        toast.success("Appointment request saved in database!", {
-          description: `Booking reference: ${result.id}`,
+        toast.success("Appointment details prepared!", {
+          description: "Opening WhatsApp to confirm your slot with our team...",
         });
       } else {
-        toast.success("Booking registered! Opening WhatsApp...");
+        toast.success("Booking details generated! Opening WhatsApp...");
       }
 
       const msg = `Hi Dental Plus Clinic, I'd like to book an appointment.%0A%0A*APPOINTMENT DETAILS*%0AName: ${form.name}%0APhone: ${form.phone}%0AService: ${form.service}%0APreferred Date: ${formattedDate}%0APreferred Slot: ${selectedSlot}%0ANote: ${form.message || "None"}`;
@@ -124,11 +124,11 @@ function AppointmentPage() {
       window.open(`https://wa.me/${CLINIC.whatsapp}?text=${msg}`, "_blank");
       setSubmitted(true);
     } catch (error: any) {
-      console.error("Booking database write failed:", error);
-      toast.error("Failed to secure appointment slot online. Try directly via WhatsApp.", {
-        description: error.message || "Database write error.",
+      console.error("Booking submission failed:", error);
+      toast.error("Unable to send request online. You can still message us directly on WhatsApp!", {
+        description: "Direct WhatsApp support is active.",
       });
-      setSlotAlert("Database connection failure. You can still message us directly!");
+      setSlotAlert("Online booking assistant is currently busy. Please click below to send via WhatsApp directly!");
     } finally {
       setIsSubmitting(false);
     }
@@ -480,7 +480,7 @@ function AppointmentPage() {
                     {isSubmitting ? (
                       <>
                         <span className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-2" />
-                        Securing slot in database...
+                        Securing your preferred slot...
                       </>
                     ) : (
                       <>
@@ -490,7 +490,7 @@ function AppointmentPage() {
                   </button>
 
                   <p className="text-[10px] text-center text-muted-foreground mt-2 leading-relaxed">
-                    * Confirmed slots are locked immediately. Re-schedulings can be requested by mentioning your booking ID.
+                    * Slots are locked immediately. To reschedule or cancel, simply message us on WhatsApp.
                   </p>
                 </form>
               )}

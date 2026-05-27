@@ -40,7 +40,7 @@ export function Hero() {
             <div className="flex items-center gap-2"><ShieldCheck className="size-5 text-primary" /> Sterilized Clinic</div>
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => <Star key={i} className="size-4 fill-amber-400 text-amber-400" />)}
-              <span className="ml-1 font-medium text-navy">4.9</span>
+              <span className="ml-1 font-medium text-navy">5.0 (Google Reviews)</span>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@ export function Hero() {
           </div>
 
           <div className="absolute -left-4 sm:-left-8 top-10 glass rounded-2xl p-4 shadow-card w-44 animate-float">
-            <div className="text-3xl font-bold text-gradient">10+</div>
+            <div className="text-3xl font-bold text-gradient">17+</div>
             <div className="text-xs text-muted-foreground">Years of clinical excellence</div>
           </div>
           <div
@@ -64,7 +64,7 @@ export function Hero() {
                 <Sparkles className="size-4 text-white" />
               </div>
               <div>
-                <div className="text-sm font-semibold text-navy">5000+ Smiles</div>
+                <div className="text-sm font-semibold text-navy">10000+ Smiles</div>
                 <div className="text-[11px] text-muted-foreground">Treated with care</div>
               </div>
             </div>

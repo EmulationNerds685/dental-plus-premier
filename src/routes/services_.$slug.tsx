@@ -32,7 +32,7 @@ export const Route = createFileRoute("/services_/$slug")({
       "provider": {
         "@type": "Dentist",
         "name": "Dental Plus",
-        "telephone": "+91-8755703677",
+        "telephone": "+91-9927866519",
         "priceRange": "₹₹",
         "address": {
           "@type": "PostalAddress",
@@ -162,7 +162,7 @@ function ServiceDetailPage() {
               </div>
               <div>
                 <div className="font-display font-semibold text-navy text-lg">Dental Plus Premier</div>
-                <div className="text-xs text-muted-foreground mt-1">A decade of trust and patient safety</div>
+                <div className="text-xs text-muted-foreground mt-1">17+ Years of trust and patient safety</div>
               </div>
               <div className="flex gap-4 text-xs font-semibold text-navy bg-secondary/60 rounded-full px-5 py-2">
                 <span className="flex items-center gap-1.5"><ShieldCheck className="size-4 text-primary" /> Sterilized</span>

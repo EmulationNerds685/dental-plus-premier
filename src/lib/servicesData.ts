@@ -493,6 +493,32 @@ export const serviceDetails: ServiceDetail[] = [
     ]
   },
   {
+    icon: Smile,
+    category: "Cosmetic",
+    title: "Braces and Aligner",
+    slug: "braces-and-aligner",
+    desc: "Straighten your teeth invisibly and comfortably with modern clear aligners or premium orthodontic braces.",
+    duration: "12-18 months",
+    tech: "Clear Aligner & SmartForce Attachments",
+    benefits: [
+      "Nearly invisible clear aligners let you straighten teeth discreetly",
+      "Corrects overcrowding, gaps, overbites, and underbites beautifully",
+      "Removable aligners make eating, brushing, and flossing easy",
+      "Premium, comfortable metal or ceramic braces also available",
+    ],
+    steps: [
+      { title: "Orthodontic Scan", desc: "We take detailed 3D digital scans of your teeth to map their movements." },
+      { title: "3D Treatment Plan", desc: "Using advanced software, we plan your teeth shifting milestones step-by-step." },
+      { title: "Custom Fabrication", desc: "Your custom series of clear, medical-grade plastic aligners are fabricated." },
+      { title: "Wear & Progress", desc: "You wear each set for 1-2 weeks, visiting us periodically for progress checkups." },
+      { title: "Retainer Phase", desc: "After alignment, we place a custom retainer to keep your new smile perfectly in place." }
+    ],
+    faqs: [
+      { q: "Are clear aligners really invisible?", a: "Yes. Clear aligners are made of ultra-clear medical polymer, making them virtually imperceptible to others during conversation." },
+      { q: "Do braces or aligners hurt?", a: "You may feel mild pressure for the first few days of starting a new aligner tray or adjusting braces. This is completely normal and shows your teeth are moving into their correct positions." }
+    ]
+  },
+  {
     icon: CalendarCheck,
     category: "General",
     title: "Online Booking",

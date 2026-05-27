@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 
 const faqs = [
-  { q: "Who is the best dentist in Dehradun?", a: "Dr. Jigyasa Bhardwaj at Dental Plus is one of the most trusted dentists in Dehradun, with 10+ years of experience in cosmetic, restorative and surgical dentistry. The clinic is empaneled with IIP PTCUL." },
+  { q: "Who is the best dentist in Dehradun?", a: "Dr. Jigyasa Bhardwaj at Dental Plus is one of the most trusted dentists in Dehradun, with 17+ years of experience in cosmetic, restorative and surgical dentistry. The clinic is empaneled with PTCUL and UJVNL." },
   { q: "Is a root canal painful?", a: "Not at all. With modern anesthesia and advanced rotary endodontic equipment, root canal treatment at Dental Plus is virtually painless and often completed in a single visit." },
   { q: "What is the cost of dental implants in Dehradun?", a: "Dental implant costs vary based on the brand and number of teeth. We offer premium implants at transparent, affordable pricing with EMI options. Book a free consultation for an exact estimate." },
   { q: "How long does teeth whitening take?", a: "Our in-clinic professional whitening takes about 45–60 minutes and delivers visibly brighter teeth in a single sitting, lasting 12–18 months with proper care." },

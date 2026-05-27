@@ -69,7 +69,7 @@ export function Testimonials() {
             Testimonials
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-navy">
-            Loved by <span className="text-gradient">5000+ Patients</span>
+            Loved by <span className="text-gradient">10000+ Patients</span>
           </h2>
         </div>
 
