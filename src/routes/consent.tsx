@@ -28,6 +28,9 @@ export const Route = createFileRoute("/consent")({
     meta: [
       { title: "Patient Clinical Consent Form | Dental Plus Clinic Dehradun" },
       { name: "description", content: "Complete and digitally sign your dental treatment consent form online." },
+      { property: "og:title", content: "Patient Clinical Consent Form | Dental Plus Clinic Dehradun" },
+      { property: "og:description", content: "Complete and digitally sign your dental treatment consent form online." },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: ConsentPage,

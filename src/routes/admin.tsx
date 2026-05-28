@@ -18,6 +18,9 @@ export const Route = createFileRoute("/admin")({
     meta: [
       { title: "Doctor Admin Panel | Dental Plus Clinic Dehradun" },
       { name: "description", content: "Clinic administrative dashboard to review clinical patient consent forms and download legal PDFs." },
+      { property: "og:title", content: "Doctor Admin Panel | Dental Plus Clinic Dehradun" },
+      { property: "og:description", content: "Clinic administrative dashboard to review clinical patient consent forms and download legal PDFs." },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: AdminDashboardPage,

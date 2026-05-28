@@ -18,6 +18,7 @@ export const Route = createFileRoute("/about")({
       { name: "keywords", content: "Dr Jigyasa Bhardwaj, Best Dentist Dehradun, Dental Clinic Dehradun, BDS Dentist Dehradun, Dental Surgeon Dehradun" },
       { property: "og:title", content: `Dr. Jigyasa Bhardwaj | Chief Dentist at Dental Plus Dehradun` },
       { property: "og:description", content: "Qualified Dental Surgeon with BDS, MAOI and a passion for modern, painless cosmetic and restorative dentistry in Dehradun." },
+      { property: "og:type", content: "profile" },
     ],
   }),
   component: AboutPage,
