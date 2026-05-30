@@ -12,7 +12,7 @@ import { createConsentFn } from "@/lib/consent";
 import logoImg from "@/assets/optimized/DP_Logo.webp";
 import {
   ShieldCheck, FileText, CheckCircle2, AlertCircle,
-  ArrowLeft, Edit3, Trash2, Languages, Download, Check,
+  ArrowLeft, Edit3, Trash2, Languages, Download, Check, Maximize2,
 } from "lucide-react";
 
 // ─── URL search param schema ────────────────────────────────────────────────
@@ -255,6 +255,7 @@ function ConsentPage() {
   const [isPdfBusy, setIsPdfBusy] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const { canvasRef, hasSigned, signatureImage, mouseHandlers, clear } = useSignaturePad();
 
@@ -542,31 +543,78 @@ function ConsentPage() {
                       <Edit3 className="size-3.5 text-primary" /> {t.signPrompt}
                     </label>
 
-                    <div className="relative border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden bg-white shadow-soft h-48 w-full cursor-crosshair">
-                      <canvas
-                        ref={canvasRef}
-                        width={600}
-                        height={192}
-                        {...mouseHandlers}
-                        className="absolute inset-0 w-full h-full touch-none"
-                      />
-                      {!hasSigned && (
-                        <div className="absolute inset-0 pointer-events-none flex flex-col justify-center items-center text-muted-foreground/50 text-xs text-center p-4">
-                          <Edit3 className="size-8 stroke-[1] mb-2 animate-pulse" />
-                          <span>{lang === "en" ? "Use your mouse or finger to draw your signature here" : "माउस या उंगली से हस्ताक्षर करें"}</span>
+                    <div
+                      className={
+                        isFullscreen
+                          ? "fixed inset-0 z-[99999] bg-slate-950 p-4 sm:p-6 flex flex-col justify-between text-white"
+                          : "relative border-2 border-dashed border-slate-300 rounded-2xl overflow-hidden bg-white shadow-soft h-48 w-full cursor-crosshair"
+                      }
+                    >
+                      {isFullscreen && (
+                        <div className="flex justify-between items-start mb-2 shrink-0">
+                          <div>
+                            <h3 className="font-display font-bold text-lg text-primary">Widescreen Signature Pad</h3>
+                            <p className="text-xs text-slate-300">Draw your signature with your finger or stylus.</p>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className={isFullscreen ? "flex-1 bg-white border-4 border-dashed border-indigo-200 rounded-3xl overflow-hidden relative cursor-crosshair my-4 flex items-center justify-center shadow-2xl" : "absolute inset-0 w-full h-full"}>
+                        <canvas
+                          ref={canvasRef}
+                          width={600}
+                          height={192}
+                          {...mouseHandlers}
+                          className="w-full h-full touch-none"
+                        />
+                        {!hasSigned && (
+                          <div className={isFullscreen ? "absolute inset-0 pointer-events-none flex flex-col justify-center items-center text-slate-400 text-xs text-center p-4" : "absolute inset-0 pointer-events-none flex flex-col justify-center items-center text-muted-foreground/50 text-xs text-center p-4"}>
+                            <Edit3 className={isFullscreen ? "size-12 stroke-[1.2] mb-2 text-indigo-500 animate-pulse" : "size-8 stroke-[1] mb-2 animate-pulse"} />
+                            <span className={isFullscreen ? "font-semibold text-slate-500" : ""}>
+                              {lang === "en" ? "Use your mouse or finger to draw your signature here" : "माउस या उंगली से हस्ताक्षर करें"}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {isFullscreen && (
+                        <div className="flex gap-3 justify-end shrink-0 mt-2">
+                          <button
+                            type="button"
+                            onClick={clear}
+                            className="inline-flex items-center gap-1.5 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-400 px-5 py-3.5 text-xs font-bold hover:bg-rose-500/20 transition-colors shadow-soft"
+                          >
+                            <Trash2 className="size-4" /> {t.clearButton}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setIsFullscreen(false)}
+                            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-primary text-white px-7 py-3.5 text-xs font-extrabold shadow-cta hover:scale-[1.02] transition-all"
+                          >
+                            <Check className="size-4" /> {lang === "en" ? "Done & Save Signature" : "पुष्टि करें और सहेजें"}
+                          </button>
                         </div>
                       )}
                     </div>
 
-                    <div className="flex justify-end">
-                      <button
-                        type="button"
-                        onClick={clear}
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-white text-rose-500 px-4 py-2.5 text-xs font-semibold hover:bg-rose-50 transition-colors shadow-soft"
-                      >
-                        <Trash2 className="size-3.5" /> {t.clearButton}
-                      </button>
-                    </div>
+                    {!isFullscreen && (
+                      <div className="flex justify-between items-center">
+                        <button
+                          type="button"
+                          onClick={() => setIsFullscreen(true)}
+                          className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 px-4 py-2.5 text-xs font-bold hover:bg-indigo-100/70 transition-colors shadow-soft animate-pulse"
+                        >
+                          <Maximize2 className="size-3.5 animate-bounce" /> {lang === "en" ? "Fullscreen Widescreen Pad" : "फुलस्क्रीन चौड़ा पैड"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={clear}
+                          className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-white text-rose-500 px-4 py-2.5 text-xs font-semibold hover:bg-rose-50 transition-colors shadow-soft"
+                        >
+                          <Trash2 className="size-3.5" /> {t.clearButton}
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                   <div

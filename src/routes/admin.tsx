@@ -58,6 +58,7 @@ async function generateConsentPDF(
 
   onStart();
 
+  // Detach stylesheets so html2canvas isn't confused by oklch vars
   const styles = Array.from(document.querySelectorAll<HTMLElement>("style, link[rel='stylesheet']"));
   styles.forEach((el) => el.parentNode?.removeChild(el));
 
@@ -80,6 +81,7 @@ async function generateConsentPDF(
 
     doc.open();
     doc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+      *, *::before, *::after { box-sizing: border-box; }
       body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact}
     </style></head><body>${element.outerHTML}</body></html>`);
     doc.close();
@@ -97,7 +99,8 @@ async function generateConsentPDF(
         image: { type: "jpeg" as const, quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, logging: false },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const },
-      })
+        pagebreak: { mode: ["css", "legacy"] },
+      } as any)
       .save();
 
     return true;
@@ -127,6 +130,7 @@ function ConsentPDFTemplate({ record }: { record: ConsentRecord }) {
     <div
       id="consent-form-printable-admin"
       style={{
+        boxSizing: "border-box",
         fontFamily: "'Georgia', 'Times New Roman', serif",
         padding: "18mm 14mm 16mm 14mm",
         color: "#111827",
@@ -178,7 +182,7 @@ function ConsentPDFTemplate({ record }: { record: ConsentRecord }) {
               </div>
             </td>
 
-            <td style={{ verticalAlign: "top", textAlign: "right", width: "30%" }}>
+            <td style={{ verticalAlign: "top", textAlign: "left", width: "30%" }}>
               <div style={{
                 border: "1.5px solid #0b1b3d",
                 borderRadius: "5px",
@@ -302,7 +306,7 @@ function ConsentPDFTemplate({ record }: { record: ConsentRecord }) {
       </div>
 
       {/* ── Disclaimers ── */}
-      <div style={{ marginBottom: "18px" }}>
+      <div style={{ marginBottom: "18px", pageBreakInside: "avoid", breakInside: "avoid" }}>
         <PDFSectionHeader label="Terms & Conditions / नियम एवं शर्तें" />
         <div style={{
           border: "1px solid #d1d5db",
@@ -328,66 +332,70 @@ function ConsentPDFTemplate({ record }: { record: ConsentRecord }) {
       </div>
 
       {/* ── Signatures ── */}
-      <PDFSectionHeader label="Authorisation & Signatures / प्राधिकरण एवं हस्ताक्षर" />
-      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "6px" }}>
-        <tbody>
-          <tr>
-            <td style={{ width: "50%", paddingRight: "12px", verticalAlign: "bottom" }}>
-              <div style={{
-                border: "1.5px solid #0b1b3d", borderRadius: "6px",
-                height: "72px", display: "flex", alignItems: "center", justifyContent: "center",
-                position: "relative", backgroundColor: "#fafafa",
-              }}>
-                {record.signatureImage
-                  ? <img src={record.signatureImage} alt="Patient Signature" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
-                  : <span style={{ fontSize: "9px", color: "#9ca3af", fontFamily: "'Arial', sans-serif" }}>No signature recorded</span>}
-                {record.signatureImage && (
-                  <span style={{
-                    position: "absolute", bottom: "3px", right: "6px",
-                    fontSize: "7px", color: "#059669", fontWeight: "700",
-                    fontFamily: "'Arial', sans-serif",
-                    backgroundColor: "#ecfdf5", padding: "1px 4px",
-                    borderRadius: "2px", border: "1px solid #a7f3d0",
-                  }}>
-                    ✓ VERIFIED ONLINE
-                  </span>
-                )}
-              </div>
-              <div style={{ fontSize: "9.5px", fontWeight: "700", marginTop: "5px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif" }}>
-                Patient / Guardian Signature
-              </div>
-              <div style={{ fontSize: "8.5px", color: "#6b7280", fontFamily: "'Arial', sans-serif", marginTop: "1px" }}>
-                Name: {record.name} &nbsp;|&nbsp; Signed: {dateStr} {timeStr}
-              </div>
-            </td>
-
-            <td style={{ width: "50%", paddingLeft: "12px", verticalAlign: "bottom" }}>
-              <div style={{
-                border: "2px solid #0b1b3d", borderRadius: "6px",
-                height: "72px", display: "flex", flexDirection: "column",
-                justifyContent: "center", alignItems: "center", textAlign: "center",
-                backgroundColor: "#f8fafc", padding: "8px",
-              }}>
-                <div style={{ fontSize: "11.5px", fontWeight: "800", color: "#0b1b3d", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", letterSpacing: "0.5px" }}>
-                  Dr. Jigyasa Bhardwaj
+      <div style={{ pageBreakInside: "avoid", breakInside: "avoid" }}>
+        <PDFSectionHeader label="Authorisation & Signatures / प्राधिकरण एवं हस्ताक्षर" />
+        <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "6px" }}>
+          <tbody>
+            <tr>
+              {/* Patient signature */}
+              <td style={{ width: "50%", paddingRight: "12px", verticalAlign: "bottom" }}>
+                <div style={{
+                  border: "1.5px solid #0b1b3d", borderRadius: "6px",
+                  height: "72px", display: "flex", alignItems: "center", justifyContent: "center",
+                  position: "relative", backgroundColor: "#fafafa",
+                }}>
+                  {record.signatureImage
+                    ? <img src={record.signatureImage} alt="Patient Signature" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
+                    : <span style={{ fontSize: "9px", color: "#9ca3af", fontFamily: "'Arial', sans-serif" }}>No signature recorded</span>}
+                  {record.signatureImage && (
+                    <span style={{
+                      position: "absolute", bottom: "3px", right: "6px",
+                      fontSize: "7px", color: "#059669", fontWeight: "700",
+                      fontFamily: "'Arial', sans-serif",
+                      backgroundColor: "#ecfdf5", padding: "1px 4px",
+                      borderRadius: "2px", border: "1px solid #a7f3d0",
+                    }}>
+                      ✓ VERIFIED ONLINE
+                    </span>
+                  )}
                 </div>
-                <div style={{ fontSize: "8px", color: "#4b5563", fontWeight: "600", marginTop: "2px", fontFamily: "'Arial', sans-serif" }}>
-                  Chief Dental Surgeon — BDS, MAOI
+                <div style={{ fontSize: "9.5px", fontWeight: "700", marginTop: "5px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif" }}>
+                  Patient / Guardian Signature
                 </div>
-                <div style={{ fontSize: "7.5px", color: "#6b7280", marginTop: "1px", fontFamily: "'Arial', sans-serif" }}>
-                  Dental Plus Clinic, {CLINIC.address.city}
+                <div style={{ fontSize: "8.5px", color: "#6b7280", fontFamily: "'Arial', sans-serif", marginTop: "1px" }}>
+                  Name: {record.name} &nbsp;|&nbsp; Signed: {dateStr} {timeStr}
                 </div>
-              </div>
-              <div style={{ fontSize: "9.5px", fontWeight: "700", marginTop: "5px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif" }}>
-                Doctor Name &amp; Verification
-              </div>
-              <div style={{ fontSize: "8.5px", color: "#6b7280", fontFamily: "'Arial', sans-serif", marginTop: "1px" }}>
-                Clinical verification — Dental Plus
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+  
+              {/* Doctor panel */}
+              <td style={{ width: "50%", paddingLeft: "12px", verticalAlign: "bottom" }}>
+                <div style={{
+                  border: "2px solid #0b1b3d", borderRadius: "6px",
+                  height: "72px", display: "flex", flexDirection: "column",
+                  justifyContent: "center", alignItems: "center", textAlign: "center",
+                  backgroundColor: "#f8fafc", padding: "8px",
+                }}>
+                  <div style={{ fontSize: "11.5px", fontWeight: "800", color: "#0b1b3d", textTransform: "uppercase", fontFamily: "'Arial', sans-serif", letterSpacing: "0.5px" }}>
+                    Dr. Jigyasa Bhardwaj
+                  </div>
+                  <div style={{ fontSize: "8px", color: "#4b5563", fontWeight: "600", marginTop: "2px", fontFamily: "'Arial', sans-serif" }}>
+                    Chief Dental Surgeon — BDS, MAOI
+                  </div>
+                  <div style={{ fontSize: "7.5px", color: "#6b7280", marginTop: "1px", fontFamily: "'Arial', sans-serif" }}>
+                    Dental Plus Clinic, {CLINIC.address.city}
+                  </div>
+                </div>
+                <div style={{ fontSize: "9.5px", fontWeight: "700", marginTop: "5px", textTransform: "uppercase", fontFamily: "'Arial', sans-serif" }}>
+                  Doctor Name &amp; Verification
+                </div>
+                <div style={{ fontSize: "8.5px", color: "#6b7280", fontFamily: "'Arial', sans-serif", marginTop: "1px" }}>
+                  Clinical verification — Dental Plus
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       {/* ── Footer ── */}
       <div style={{
@@ -471,6 +479,7 @@ function AdminDashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [pdfRecord, setPdfRecord] = useState<ConsentRecord | null>(null);
+  const [previewRecord, setPreviewRecord] = useState<ConsentRecord | null>(null);
   const [isPdfBusy, setIsPdfBusy] = useState(false);
 
   // ── Derived ──
@@ -572,9 +581,18 @@ function AdminDashboardPage() {
   }, []);
 
   // ─────────────────────────────────────────────────────────────────────────────
-
   return (
     <main className="min-h-screen bg-background overflow-x-hidden pt-20">
+      {isPdfBusy && (
+        <div className="fixed inset-0 z-[99999] bg-[#0b1b3d] flex flex-col items-center justify-center text-white gap-4 backdrop-blur-md">
+          <div className="relative flex items-center justify-center">
+            <div className="size-16 rounded-full border-4 border-t-primary border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+            <div className="absolute size-10 rounded-full border-4 border-b-cyan-400 border-t-transparent border-r-transparent border-l-transparent animate-spin duration-700"></div>
+          </div>
+          <h3 className="font-display font-bold text-lg tracking-wide animate-pulse">Generating Certified PDF...</h3>
+          <p className="text-xs text-slate-300 font-medium">Compiling print layout & signature elements.</p>
+        </div>
+      )}
       <Navbar />
 
       {!isAuthenticated ? (
@@ -882,13 +900,22 @@ function AdminDashboardPage() {
                                       </div>
                                     </div>
 
-                                    <button
-                                      onClick={() => handleDownloadPDF(consent)}
-                                      disabled={isPdfBusy}
-                                      className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-4 py-3 text-xs font-bold text-white shadow-soft hover:scale-[1.01] transition-transform disabled:opacity-50"
-                                    >
-                                      <Download className="size-4" /> Download Legal PDF
-                                    </button>
+                                    <div className="flex flex-col sm:flex-row gap-2 w-full">
+                                      <button
+                                        onClick={() => handleDownloadPDF(consent)}
+                                        disabled={isPdfBusy}
+                                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-4 py-3 text-xs font-bold text-white shadow-soft hover:scale-[1.01] transition-transform disabled:opacity-50"
+                                      >
+                                        <Download className="size-4" /> Download PDF
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => setPreviewRecord(consent)}
+                                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100/70 px-4 py-3 text-xs font-bold shadow-soft transition-colors"
+                                      >
+                                        <Eye className="size-4" /> Live Preview &amp; Design
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -910,6 +937,43 @@ function AdminDashboardPage() {
       {pdfRecord && (
         <div aria-hidden style={{ position: "absolute", left: "-9999px", top: 0 }}>
           <ConsentPDFTemplate record={pdfRecord} />
+        </div>
+      )}
+
+      {/* ── LIVE PREVIEW / DESIGN MODE ── */}
+      {previewRecord && (
+        <div className="fixed inset-0 z-[9999] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8 overflow-auto">
+          <div className="bg-white shadow-2xl rounded-3xl max-w-[210mm] w-full p-6 relative border border-border flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center border-b border-border pb-3.5 mb-6 shrink-0">
+              <div>
+                <h3 className="font-display font-bold text-lg text-navy">Live PDF Template Designer</h3>
+                <p className="text-xs text-muted-foreground">Modify code in <code>ConsentPDFTemplate</code> in <code>admin.tsx</code> to hot-reload this preview.</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleDownloadPDF(previewRecord)}
+                  disabled={isPdfBusy}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-primary px-4 py-2 text-xs font-bold text-white shadow-soft transition-all disabled:opacity-50"
+                >
+                  <Download className="size-3.5" /> Download PDF
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPreviewRecord(null)}
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-white text-navy hover:bg-muted px-4 py-2 text-xs font-bold transition-all"
+                >
+                  Close Preview
+                </button>
+              </div>
+            </div>
+            {/* The printable area styled container */}
+            <div className="border border-dashed border-slate-300 rounded-2xl bg-slate-50 p-6 flex justify-center overflow-auto shadow-inner">
+              <div className="bg-white shadow-lg rounded-md border border-slate-200 p-2" style={{ minWidth: "182mm" }}>
+                <ConsentPDFTemplate record={previewRecord} />
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
