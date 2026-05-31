@@ -479,7 +479,6 @@ function AdminDashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [pdfRecord, setPdfRecord] = useState<ConsentRecord | null>(null);
-  const [previewRecord, setPreviewRecord] = useState<ConsentRecord | null>(null);
   const [isPdfBusy, setIsPdfBusy] = useState(false);
 
   // ── Derived ──
@@ -904,16 +903,9 @@ function AdminDashboardPage() {
                                       <button
                                         onClick={() => handleDownloadPDF(consent)}
                                         disabled={isPdfBusy}
-                                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-4 py-3 text-xs font-bold text-white shadow-soft hover:scale-[1.01] transition-transform disabled:opacity-50"
+                                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-4 py-3 text-xs font-bold text-white shadow-soft hover:scale-[1.01] transition-transform disabled:opacity-50"
                                       >
                                         <Download className="size-4" /> Download PDF
-                                      </button>
-                                      <button
-                                        type="button"
-                                        onClick={() => setPreviewRecord(consent)}
-                                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100/70 px-4 py-3 text-xs font-bold shadow-soft transition-colors"
-                                      >
-                                        <Eye className="size-4" /> Live Preview &amp; Design
                                       </button>
                                     </div>
                                   </div>
@@ -937,43 +929,6 @@ function AdminDashboardPage() {
       {pdfRecord && (
         <div aria-hidden style={{ position: "absolute", left: "-9999px", top: 0 }}>
           <ConsentPDFTemplate record={pdfRecord} />
-        </div>
-      )}
-
-      {/* ── LIVE PREVIEW / DESIGN MODE ── */}
-      {previewRecord && (
-        <div className="fixed inset-0 z-[9999] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8 overflow-auto">
-          <div className="bg-white shadow-2xl rounded-3xl max-w-[210mm] w-full p-6 relative border border-border flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center border-b border-border pb-3.5 mb-6 shrink-0">
-              <div>
-                <h3 className="font-display font-bold text-lg text-navy">Live PDF Template Designer</h3>
-                <p className="text-xs text-muted-foreground">Modify code in <code>ConsentPDFTemplate</code> in <code>admin.tsx</code> to hot-reload this preview.</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleDownloadPDF(previewRecord)}
-                  disabled={isPdfBusy}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-primary px-4 py-2 text-xs font-bold text-white shadow-soft transition-all disabled:opacity-50"
-                >
-                  <Download className="size-3.5" /> Download PDF
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPreviewRecord(null)}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-white text-navy hover:bg-muted px-4 py-2 text-xs font-bold transition-all"
-                >
-                  Close Preview
-                </button>
-              </div>
-            </div>
-            {/* The printable area styled container */}
-            <div className="border border-dashed border-slate-300 rounded-2xl bg-slate-50 p-6 flex justify-center overflow-auto shadow-inner">
-              <div className="bg-white shadow-lg rounded-md border border-slate-200 p-2" style={{ minWidth: "182mm" }}>
-                <ConsentPDFTemplate record={previewRecord} />
-              </div>
-            </div>
-          </div>
         </div>
       )}
 

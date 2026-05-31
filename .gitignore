@@ -15,7 +15,7 @@ dist-ssr
 .tanstack/**
 .nitro
 *.local
-
+RECRUITER_PROJECT_PROFILE.md
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
