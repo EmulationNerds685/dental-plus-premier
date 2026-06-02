@@ -54,7 +54,8 @@ async function optimizeImages() {
     }
 
     try {
-      const image = sharp(inputPath);
+      // .rotate() auto-orients the image using EXIF orientation metadata
+      const image = sharp(inputPath).rotate();
       const metadata = await image.metadata();
 
       // Resize if wider than MAX_WIDTH, maintain aspect ratio

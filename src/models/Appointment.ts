@@ -7,6 +7,7 @@ export interface IAppointment extends mongoose.Document {
   date: string;
   slot: string;
   message?: string;
+  status: "pending" | "confirmed" | "completed" | "cancelled";
   createdAt: Date;
 }
 
@@ -18,6 +19,7 @@ const AppointmentSchema = new mongoose.Schema<IAppointment>(
     date: { type: String, required: true },
     slot: { type: String, required: true },
     message: { type: String, trim: true },
+    status: { type: String, required: true, enum: ["pending", "confirmed", "completed", "cancelled"], default: "pending" },
   },
   { timestamps: true }
 );

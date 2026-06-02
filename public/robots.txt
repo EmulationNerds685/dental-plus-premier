@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /consent
+
+Sitemap: https://dental-plus-clinic.vercel.app/sitemap.xml

@@ -6,6 +6,8 @@ import { MobileCta } from "@/components/site/MobileCta";
 import { motion } from "framer-motion";
 import { CLINIC, waLink } from "@/lib/clinic";
 import { Phone, Mail, MapPin, Clock, MessageSquare, Compass, Send, CheckCircle2 } from "lucide-react";
+import { createQueryFn } from "@/lib/query";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -23,10 +25,29 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "Query", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "Treatment Cost Estimate", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await createQueryFn({
+        data: {
+          name: form.name,
+          phone: form.phone,
+          email: form.email || "",
+          subject: form.subject,
+          message: form.message,
+        },
+      });
+      toast.success("Query submitted successfully!");
+    } catch (error) {
+      console.error("Failed to save query:", error);
+      toast.error("Could not save query to database, but sending via WhatsApp...");
+    } finally {
+      setIsSubmitting(false);
+    }
     // Simulate sending message to WhatsApp
     const msg = `Hi Dental Plus,%0AName: ${form.name}%0APhone: ${form.phone}%0ASubject: ${form.subject}%0AMessage: ${form.message}`;
     window.open(`https://wa.me/${CLINIC.whatsapp}?text=${msg}`, "_blank");
@@ -254,9 +275,19 @@ function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 font-semibold text-primary-foreground shadow-cta hover:scale-[1.02] active:scale-95 transition-transform"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 font-semibold text-primary-foreground shadow-cta hover:scale-[1.02] active:scale-95 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="size-4.5" /> Send via WhatsApp
+                    {isSubmitting ? (
+                      <>
+                        <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2" />
+                        Saving Query...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="size-4.5" /> Send via WhatsApp
+                      </>
+                    )}
                   </button>
                   <p className="text-[10px] text-center text-muted-foreground mt-2">
                     * Required fields. Submitting will format details and prompt WhatsApp to send instantly.

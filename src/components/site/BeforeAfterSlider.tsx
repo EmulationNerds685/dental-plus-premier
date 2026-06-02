@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import smileImg from "@/assets/smile.jpg";
+import beforeImg from "@/assets/optimized/before.webp";
+import afterImg from "@/assets/optimized/after.webp";
 
 export function BeforeAfterSlider() {
   const [sliderPosition, setSliderPosition] = useState(50); // percentage (0 - 100)
@@ -74,8 +75,8 @@ export function BeforeAfterSlider() {
         {/* AFTER IMAGE (The base/underneath image - clean, white, beautiful) */}
         <div className="absolute inset-0 w-full h-full">
           <img
-            src={smileImg}
-            alt="After Teeth Whitening"
+            src={afterImg}
+            alt="After Treatment"
             className="w-full h-full object-cover"
             draggable="false"
           />
@@ -84,19 +85,18 @@ export function BeforeAfterSlider() {
           </div>
         </div>
 
-        {/* BEFORE IMAGE (The sliding overlay - simulated yellowed teeth using pristine oklch/sepia filters) */}
+        {/* BEFORE IMAGE (The sliding overlay) */}
         <div
           className="absolute inset-0 h-full overflow-hidden"
           style={{ width: `${sliderPosition}%` }}
         >
           <img
-            src={smileImg}
+            src={beforeImg}
             alt="Before Treatment"
             className="absolute inset-0 w-full h-full object-cover max-w-none"
             style={{
               width: `${containerWidth}px`,
               height: `${containerHeight}px`,
-              filter: "sepia(0.55) saturate(1.4) contrast(0.95) brightness(0.85)",
             }}
             draggable="false"
           />
