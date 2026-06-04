@@ -5,9 +5,13 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+
+// ── Google Analytics 4 ─────────────────────────────────────────────
+const GA_MEASUREMENT_ID = "G-HQ26XZ70DE" as const;
 
 import appCss from "../styles.css?url";
 import logoImg from "../assets/optimized/DP_Logo_favicon.png?url";
@@ -90,6 +94,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" },
     ],
+    scripts: [
+      // GA4 — external gtag.js loader
+      {
+        src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+        async: true,
+      },
+      // GA4 — inline initialisation (runs once on first page load)
+      {
+        children: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+        `,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -114,11 +134,23 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
 
   useEffect(() => {
     document.body.classList.add("js-ready");
     return () => document.body.classList.remove("js-ready");
   }, []);
+
+  // ── GA4 pageview tracking on every client-side route change ──────
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "page_view", {
+        page_path: location.pathname,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }
+  }, [location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
