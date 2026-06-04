@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /consent
 
-Sitemap: https://dental-plus-clinic.vercel.app/sitemap.xml
+Sitemap: https://dentalplusdehradun.in/sitemap.xml

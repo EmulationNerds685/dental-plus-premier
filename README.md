@@ -8,7 +8,7 @@ Built using **TanStack Start**, **TypeScript**, **MongoDB**, and server-side Rea
 
 ## Live Demo
 
-🔗 **Website:** https://dental-plus-clinic.vercel.app
+🔗 **Website:** https://dentalplusdehradun.in
 
 ---
 
