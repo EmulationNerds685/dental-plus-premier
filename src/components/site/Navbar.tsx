@@ -8,6 +8,7 @@ import logoImg from "@/assets/optimized/DP_Logo.webp";
 const links = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
+  { to: "/results", label: "Results" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];

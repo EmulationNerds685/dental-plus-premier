@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import beforeImg from "@/assets/optimized/before.webp";
 import afterImg from "@/assets/optimized/after.webp";
 
@@ -140,6 +141,15 @@ export function BeforeAfterSlider() {
       <p className="mt-3 text-xs text-muted-foreground text-center">
         Drag the slider horizontally to view the instant transformation.
       </p>
+      <div className="mt-6 text-center">
+        <Link
+          to="/results"
+          className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-6 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 group"
+        >
+          View All Patient Transformations
+          <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </div>
     </div>
   );
 }

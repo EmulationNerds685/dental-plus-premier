@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ResultsRouteImport } from './routes/results'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsentRouteImport } from './routes/consent'
 import { Route as AppointmentRouteImport } from './routes/appointment'
@@ -21,6 +22,11 @@ import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/appointment': typeof AppointmentRoute
   '/consent': typeof ConsentRoute
   '/contact': typeof ContactRoute
+  '/results': typeof ResultsRoute
   '/services': typeof ServicesRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/appointment': typeof AppointmentRoute
   '/consent': typeof ConsentRoute
   '/contact': typeof ContactRoute
+  '/results': typeof ResultsRoute
   '/services': typeof ServicesRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/appointment': typeof AppointmentRoute
   '/consent': typeof ConsentRoute
   '/contact': typeof ContactRoute
+  '/results': typeof ResultsRoute
   '/services': typeof ServicesRoute
   '/services_/$slug': typeof ServicesSlugRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/appointment'
     | '/consent'
     | '/contact'
+    | '/results'
     | '/services'
     | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/appointment'
     | '/consent'
     | '/contact'
+    | '/results'
     | '/services'
     | '/services/$slug'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/appointment'
     | '/consent'
     | '/contact'
+    | '/results'
     | '/services'
     | '/services_/$slug'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   AppointmentRoute: typeof AppointmentRoute
   ConsentRoute: typeof ConsentRoute
   ContactRoute: typeof ContactRoute
+  ResultsRoute: typeof ResultsRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppointmentRoute: AppointmentRoute,
   ConsentRoute: ConsentRoute,
   ContactRoute: ContactRoute,
+  ResultsRoute: ResultsRoute,
   ServicesRoute: ServicesRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
