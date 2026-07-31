@@ -9,49 +9,75 @@ import before2 from "@/assets/optimized/before2.webp";
 import after2 from "@/assets/optimized/after2.webp";
 import before3 from "@/assets/optimized/before3.webp";
 import after3 from "@/assets/optimized/after3.webp";
-import before4 from "@/assets/optimized/before4.JPG";
+import before4 from "@/assets/optimized/before4.jpg";
 import after4 from "@/assets/optimized/after4.webp";
 import before5 from "@/assets/optimized/before5.webp";
 import after5 from "@/assets/optimized/after5.webp";
-
+import before6 from "@/assets/optimized/before6.png";
+import after6 from "@/assets/optimized/after6.png";
+import before7 from "@/assets/optimized/before7.png";
+import after7 from "@/assets/optimized/after7.png";
+import before8 from "@/assets/optimized/before8.png";
+import after8 from "@/assets/optimized/after8.png";
 const cases = [
   {
     id: 1,
     before: before1,
     after: after1,
-    label: "Smile Makeover",
-    description: "Complete smile restoration with composite bonding and whitening.",
+    label: "Crown and Bridges",
+    description: "Multiple missing teeth replaced with custom ceramic bridges for a seamless, functional smile.",
   },
   {
     id: 2,
     before: before2,
     after: after2,
-    label: "Teeth Whitening",
-    description: "Professional in-chair whitening — multiple shades brighter.",
+    label: "Crown and Bridges",
+    description: "Damaged teeth reconstructed with full-coverage crowns to restore strength and aesthetics.",
   },
   {
     id: 3,
     before: before3,
     after: after3,
-    label: "Veneers & Crowns",
-    description: "Porcelain veneers for a perfectly aligned, natural-looking smile.",
+    label: "Crown and Bridges",
+    description: "Span of missing teeth bridged with precision-fitted porcelain units for natural alignment.",
   },
   {
     id: 4,
     before: before4,
     after: after4,
-    label: "Cosmetic Restoration",
-    description: "Chipped and worn teeth fully restored to natural form.",
+    label: "Crown and Bridges",
+    description: "Severely worn and broken teeth rebuilt with durable crowns to re-establish proper bite and shape.",
   },
   {
     id: 5,
     before: before5,
     after: after5,
-    label: "Full Arch Treatment",
-    description: "Comprehensive arch treatment combining multiple procedures.",
+    label: "Teeth Whitening",
+    description: "Noticeable shade improvement achieved through professional bleaching for a brighter smile.",
   },
+  {
+    id: 6,
+    before: before6,
+    after: after6,
+    label: "Composite Restoration",
+    description: "Chips, gaps, and discoloration corrected with tooth-colored composite resin bonding.",
+  },
+{
+  id: 7,
+  before: before7,
+  after: after7,
+  label: "Smile Designing",
+  description: "Customized facial analysis and digital planning to create a harmonious, personalized smile transformation.",
+}
+  ,
+{
+  id: 8,
+  before: before8,
+  after: after8,
+  label: "Complete Denture",
+  description: "Full upper or lower arch replacement restoring chewing function, facial support, and a natural-looking smile.",
+}
 ];
-
 // ─── Individual Case Slider ───────────────────────────────────────────────────
 function CaseSlider({
   before,
