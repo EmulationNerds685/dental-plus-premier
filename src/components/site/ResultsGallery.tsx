@@ -9,16 +9,16 @@ import before2 from "@/assets/optimized/before2.webp";
 import after2 from "@/assets/optimized/after2.webp";
 import before3 from "@/assets/optimized/before3.webp";
 import after3 from "@/assets/optimized/after3.webp";
-import before4 from "@/assets/optimized/before4.JPG";
+import before4 from "@/assets/optimized/before4.webp";
 import after4 from "@/assets/optimized/after4.webp";
 import before5 from "@/assets/optimized/before5.webp";
 import after5 from "@/assets/optimized/after5.webp";
-import before6 from "@/assets/optimized/before6.PNG";
-import after6 from "@/assets/optimized/after6.png";
-import before7 from "@/assets/optimized/before7.png";
-import after7 from "@/assets/optimized/after7.png";
-import before8 from "@/assets/optimized/before8.png";
-import after8 from "@/assets/optimized/after8.png";
+import before6 from "@/assets/optimized/before6.webp";
+import after6 from "@/assets/optimized/after6.webp";
+import before7 from "@/assets/optimized/before7.webp";
+import after7 from "@/assets/optimized/after7.webp";
+import before8 from "@/assets/optimized/before8.webp";
+import after8 from "@/assets/optimized/after8.webp";
 const cases = [
   {
     id: 1,
@@ -62,21 +62,21 @@ const cases = [
     label: "Composite Restoration",
     description: "Chips, gaps, and discoloration corrected with tooth-colored composite resin bonding.",
   },
-{
-  id: 7,
-  before: before7,
-  after: after7,
-  label: "Smile Designing",
-  description: "Customized facial analysis and digital planning to create a harmonious, personalized smile transformation.",
-}
+  {
+    id: 7,
+    before: before7,
+    after: after7,
+    label: "Smile Designing",
+    description: "Customized facial analysis and digital planning to create a harmonious, personalized smile transformation.",
+  }
   ,
-{
-  id: 8,
-  before: before8,
-  after: after8,
-  label: "Complete Denture",
-  description: "Full upper or lower arch replacement restoring chewing function, facial support, and a natural-looking smile.",
-}
+  {
+    id: 8,
+    before: before8,
+    after: after8,
+    label: "Complete Denture",
+    description: "Full upper or lower arch replacement restoring chewing function, facial support, and a natural-looking smile.",
+  }
 ];
 // ─── Individual Case Slider ───────────────────────────────────────────────────
 function CaseSlider({
