@@ -9,7 +9,7 @@ import before2 from "@/assets/optimized/before2.webp";
 import after2 from "@/assets/optimized/after2.webp";
 import before3 from "@/assets/optimized/before3.webp";
 import after3 from "@/assets/optimized/after3.webp";
-import before4 from "@/assets/optimized/before4.jpg";
+import before4 from "@/assets/optimized/before4.JPG";
 import after4 from "@/assets/optimized/after4.webp";
 import before5 from "@/assets/optimized/before5.webp";
 import after5 from "@/assets/optimized/after5.webp";
