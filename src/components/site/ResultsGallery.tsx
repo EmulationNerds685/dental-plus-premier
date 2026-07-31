@@ -13,12 +13,12 @@ import before4 from "@/assets/optimized/before4.JPG";
 import after4 from "@/assets/optimized/after4.webp";
 import before5 from "@/assets/optimized/before5.webp";
 import after5 from "@/assets/optimized/after5.webp";
-import before6 from "@/assets/optimized/before6.png";
-import after6 from "@/assets/optimized/after6.png";
-import before7 from "@/assets/optimized/before7.png";
-import after7 from "@/assets/optimized/after7.png";
-import before8 from "@/assets/optimized/before8.png";
-import after8 from "@/assets/optimized/after8.png";
+import before6 from "@/assets/optimized/before6.PNG";
+import after6 from "@/assets/optimized/after6.PNG";
+import before7 from "@/assets/optimized/before7.PNG";
+import after7 from "@/assets/optimized/after7.PNG";
+import before8 from "@/assets/optimized/before8.PNG";
+import after8 from "@/assets/optimized/after8.PNG";
 const cases = [
   {
     id: 1,
